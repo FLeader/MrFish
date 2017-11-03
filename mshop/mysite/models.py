@@ -4,7 +4,9 @@ from django.utils.encoding import python_2_unicode_compatible
 from django.contrib.auth.models import User
 from filer.fields.image import FilerImageField
 from filer.fields.file import FilerFileField
-
+import sys;
+reload(sys);
+sys.setdefaultencoding("utf8")
 @python_2_unicode_compatible
 
 class CarouselImg(models.Model):

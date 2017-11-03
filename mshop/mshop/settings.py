@@ -20,7 +20,7 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 # See https://docs.djangoproject.com/en/1.8/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-with open('/Users/apple/MyProject/mshop/gen.min-huang.com/secret_key.txt') as f:
+with open(BASE_DIR+'/gen.min-huang.com/secret_key.txt') as f:
     SECRET_KEY = f.read().strip()
 
 # SECURITY WARNING: don't run with debug turned on in production!
@@ -63,7 +63,7 @@ FILER_STORAGES = {
         'main': {
             'ENGINE': 'filer.storage.PublicFileSystemStorage',
             'OPTIONS': {
-                'location': '/Users/apple/MyProject/mshop/media/filer',
+                'location': BASE_DIR+'/media/filer',
                 'base_url': '/media/filer/',
             },
             'UPLOAD_TO': 'filer.utils.generate_filename.randomized',
@@ -72,7 +72,7 @@ FILER_STORAGES = {
         'thumbnails': {
             'ENGINE': 'filer.storage.PublicFileSystemStorage',
             'OPTIONS': {
-                'location': '/User/apple/MyProject/mshop/media/filer_thumbnails',
+                'location': BASE_DIR+'/media/filer_thumbnails',
                 'base_url': '/media/filer_thumbnails/',
             },
         },
@@ -81,7 +81,7 @@ FILER_STORAGES = {
         'main': {
             'ENGINE': 'filer.storage.PrivateFileSystemStorage',
             'OPTIONS': {
-                'location': '/var/www/mshop/smedia/filer',
+                'location': BASE_DIR+'/smedia/filer',
                 'base_url': '/smedia/filer/',
             },
             'UPLOAD_TO': 'filer.utils.generate_filename.randomized',
@@ -90,7 +90,7 @@ FILER_STORAGES = {
         'thumbnails': {
             'ENGINE': 'filer.storage.PrivateFileSystemStorage',
             'OPTIONS': {
-                'location': '/var/www/mshop/smedia/filer_thumbnails',
+                'location': BASE_DIR+'/smedia/filer_thumbnails',
                 'base_url': '/smedia/filer_thumbnails/',
             },
         },
@@ -107,7 +107,7 @@ SITE_ID = 1
 LOGIN_REDIRECT_URL = '/'
 ACCOUNT_ACTIVATION_DAYS = 7
 EMAIL_BACKEND = 'django_mailgun.MailgunBackend'
-with open('/Users/apple/MyProject/mshop/mailgun_access_key.txt') as f:
+with open(BASE_DIR+'/mailgun_access_key.txt') as f:
     MAILGUN_ACCESS_KEY = f.read().strip()
 MAILGUN_SERVER_NAME = 'drho.tw'
 
@@ -175,11 +175,13 @@ USE_TZ = True
 STATIC_URL = '/static/'
 STATICFILES_DIRS = [
     os.path.join(BASE_DIR, 'static'),
+    os.path.join(BASE_DIR, 'media'),
     os.path.join(BASE_DIR, 'media/filer'),
+    os.path.join(BASE_DIR, 'media/filer_thumbnails'),
 ]
-MEDIA_URL = '/media/filer/'
-MEDIA_ROOT = '/Users/apple/MyProject/mshop/media/filer'
-STATIC_ROOT = '/Users/apple/MyProject/mshop/staticfiles'
+MEDIA_URL = '/media/'
+MEDIA_ROOT = BASE_DIR+'/media'
+STATIC_ROOT = BASE_DIR+'/staticfiles'
 
 SESSION_COOKIE_SECURE = False
 CSRF_COOKIE_SECURE = False
