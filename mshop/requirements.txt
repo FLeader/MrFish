@@ -8,7 +8,7 @@ django-filters==0.2.1
 django-mptt==0.8.7
 django-paypal==0.4.1
 django-polymorphic==1.0.2
-djangorestframework==3.7.1
+djangorestframework==3.11.2
 easy-thumbnails==2.3
 idna==2.6
 oauthlib==2.0.6
